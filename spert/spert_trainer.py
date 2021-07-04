@@ -108,6 +108,10 @@ class SpERTTrainer(BaseTrainer):
         self._close_summary_writer()
 
     def eval(self, dataset_path: str, types_path: str, input_reader_cls: Type[BaseInputReader]):
+
+        # print("**************************************************************************")
+        # print("                         INSIDE EVAL")
+        # print("**************************************************************************")
         args = self._args
         dataset_label = 'test'
 
@@ -126,6 +130,14 @@ class SpERTTrainer(BaseTrainer):
         # load model
         model = self._load_model(input_reader)
         model.to(self._device)
+
+        print("before printing model summary")
+        # print("type(test_dataset)", type(test_dataset))
+        # from pytorch_model_summary import summary
+        # need to correct the below line
+        # print(summary(model, test_dataset[0], show_input=True))
+        print(model)
+        print("after printing model summary")
 
         # evaluate
         self._eval(model, test_dataset, input_reader)

@@ -234,3 +234,5 @@ _MODELS = {
 
 def get_model(name):
     return _MODELS[name]
+
+# if __name__ == '__main__':
